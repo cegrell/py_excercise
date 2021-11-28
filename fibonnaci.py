@@ -30,5 +30,14 @@ class Solution:
             a, b = b, a + b
         return a
 
+
+    def fib_w_memo_obj(self, n: int, memo: dict = {}):        
+        if n in memo: return memo[n] # Add the memo case
+        if n == 0: return 0
+        if n == 1: return 1
+        memo[n] = self.fib_w_memo_obj(n-2, memo) + self.fib_w_memo_obj(n-1, memo)
+        return memo[n]
+
+
 if __name__ == '__main__':
-    print(Solution().fib_iterative_no_cache(30))
+    print(Solution().fib_w_memo_obj(150))
