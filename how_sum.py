@@ -37,13 +37,17 @@ def how_sum_memoized(target_sum: int, nums: list, memo: dict = {}) -> list:
 # print(howSum_memoized(300, [7, 14]))
 
 def how_sum_tabulation(target_sum: int, nums: list) -> list:
+    # m is the target_sum
+    # n length of numbers
+    # Time: O(m*n*m)
+    # Space: O(m^2)
     tbl = [None] * (target_sum + 1)
     tbl[0] = []
 
-    for i in range(target_sum + 1):
+    for i in range(target_sum + 1): # Time m
         if tbl[i] is not None:
-            for n in nums:
-                if i + n < target_sum + 1: tbl[i + n] = tbl[i] + [n]
+            for n in nums: # Time n
+                if i + n < target_sum + 1: tbl[i + n] = tbl[i] + [n] # Time m
     return tbl[target_sum]
 
 print(how_sum_tabulation(7, [5, 3, 4]))
