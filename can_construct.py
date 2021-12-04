@@ -22,6 +22,12 @@ def can_construct(target: str, word_bank: list) -> bool:
 
 def can_construct_optimised(target: str, word_bank: list, memo: dict = {}):
     # With memoization
+    # m is len(target)
+    # n is len(word_bank)
+    # Time: O(n * m^2) - the second m
+    # Space: (m^2)
+
+
     if target == '': return True
     if target in memo: return memo[target]
     target_length = len(target)
