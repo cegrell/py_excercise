@@ -13,7 +13,7 @@ def countConstruct(target: str, word_bank: list) -> int:
     return sums
 
 
-print(countConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd']))
+#print(countConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd']))
 
 
 def count_construct_memized(target: str, word_bank: list, memo: dict = {}) -> int:
@@ -31,10 +31,23 @@ def count_construct_memized(target: str, word_bank: list, memo: dict = {}) -> in
     memo[target] = counter
     return counter
 
-print(count_construct_memized('abcdef', ['abc', 'a', 'bc', 'def', 'd', 'ef']))
+#print(count_construct_memized('abcdef', ['abc', 'a', 'bc', 'def', 'd', 'ef']))
 
 
 def count_construct_tabulation(target: str, word_bank: list) -> int:
+    # m target
+    # n wordbank length
+    # Time: O(m^2 * n)
+    # Space: m 
     tbl = [0] * (len(target) + 1)
     tbl[0] = 1
 
+    for i in range(len(target)):
+        for word in word_bank:
+            if target[i] == word[0]:
+                if i + len(word) < len(tbl):
+                    tbl[i+len(word)] += tbl[i]
+    return tbl[len(target)]    
+
+
+print(count_construct_tabulation('purple', ['purp', 'p', 'ur', 'le', 'purpl']))
