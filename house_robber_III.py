@@ -25,4 +25,11 @@ class Solution:
 print(Solution().rob(TreeNode(4, left=TreeNode(1, left=TreeNode(2, left=TreeNode(3))))))
 
 
-    
+
+#       4 <--
+#      / 
+#     1
+#    /
+#   2
+#  /
+# 3  <--
